@@ -135,7 +135,27 @@ nav {
 
 }
 
+nav .innerContent{
+    position: relative;
+
+    .dropdownCont{
+        position: absolute;
+        left: 0;
+        top: 42px;
+        width: fit-content;
+        max-width: 25rem;
+        height: 0;
+        background-color: red;
+
+        .item{
+            overflow: hidden;
+            padding: 2px;
+        }
+    }
+}
+
 nav .dropdown-bg{
+    cursor: default;
 
     width: 100%;
     position: absolute;
@@ -146,16 +166,5 @@ nav .dropdown-bg{
     background:rgba(48, 47, 47, 0.211);
     backdrop-filter: blur(5px);
 
-    .dropdownCont{
-        width: 100%;
-        height: 0;
-        background-color: var(--white);
-        overflow: hidden;
-
-        .item{
-            overflow: hidden;
-            padding: 2px;
-        }
-    }
 }
 
