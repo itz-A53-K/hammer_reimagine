@@ -2,6 +2,7 @@
     const locomotiveScroll = new LocomotiveScroll();
 })();
 
+btnAnimations()
 navAnimation()
 
 function navAnimation() {
@@ -42,7 +43,7 @@ function navAnimation() {
 
 
     $("nav .navLink.dropdown").mouseenter(function () {
-        
+
         if (!$(this).hasClass('active') && isFinish) {
             $(this).addClass('active')
             setTimeLine($(this).attr('id'))
@@ -57,41 +58,85 @@ function navAnimation() {
 
 }
 
+function btnAnimations() {
+
+    //btn animation 1
+    $(".btn1").html($(".btn1").html() + '<div class="btnbg"></div>')
+    var btn1TL = gsap.timeline({ paused: true })
+    btn1TL.to(".btn1", {
+        '--beforeLeft': '50%',
+        '--afterLeft': '50%',
+        "--opacity": 1,
+        duration: 0.2,
+    })
+    btn1TL.to(".btn1 .btnbg", {
+        scale: 1,
+        opacity: 1,
+        duration: 0.15,
+    }, 'a')
+    btn1TL.to(".btn1 ", {
+        color: 'white',
+        gap: '1rem',
+        duration: 0.15,
+    }, 'a')
+
+
+
+
+    $(".btn1").hover(
+        function () {
+            btn1TL.play()
+        },
+        function () {
+            btn1TL.reverse()
+        }
+    )
+}
+
+
 //img silder
 
-let slideIndex = 0;
-showSlides(); // call showslide method
-
-function showSlides() {
-	let i;
-
-	// get the array of divs' with classname image-sliderfade
-	let slides = document.getElementsByClassName("image-sliderfade");
-
-	// get the array of divs' with classname dot
-	let dots = document.getElementsByClassName("dot");
-
-	for (i = 0; i < slides.length; i++) {
-		// initially set the display to
-		// none for every image.
-		slides[i].style.display = "none";
-	}
-
-	// increase by 1, Global variable
-	slideIndex++;
-
-	// check for boundary
-	if (slideIndex > slides.length) {
-		slideIndex = 1;
-	}
-
-	for (i = 0; i < dots.length; i++) {
-		dots[i].className = dots[i].className.replace(" active", "");
-	}
-
-	slides[slideIndex - 1].style.display = "block";
-	dots[slideIndex - 1].className += " active";
-
-	// Change image every 2 seconds
-	setTimeout(showSlides, 2000);
+// call showslide method
+const sleep = (time) => {
+    return new Promise((resolve) => setTimeout(resolve, time))
 }
+
+async function showSlides() {
+
+    let slides = $("#home .sliderItem");
+
+    for (let i = slides.length -1; i >=0; i--) {
+
+        let j = i - 1
+        if (j <0) { j = slides.length-1 }
+
+        let curSlide = $(slides[i])
+        let nextSlide = $(slides[j])
+
+        await sleep(8000)
+
+        nextSlide.addClass("active")
+
+        let tl=gsap.timeline()
+        tl.to(curSlide, {
+            scale: 0,
+            opacity: 0,
+            duration: 0.5,
+            onComplete: () => {
+                curSlide.removeClass("active").removeClass('zHigh')
+                nextSlide.addClass("zHigh")
+            }
+        })
+        tl.set(curSlide, {
+            scale: 1,
+            opacity: 1
+        })
+
+        if (i == 0) {
+            i = slides.length;
+        }
+    }
+
+}
+
+showSlides();
