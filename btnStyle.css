@@ -1,0 +1,89 @@
+
+.btn1 {
+    height: 3.5rem;
+    width: 12rem;
+    margin: 2rem 1rem;
+    font-weight: 700;
+    font-size: 1.5em;
+    border-radius: 10px;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    box-shadow: -0.5px 2px 1px black, 01px 2px 1px black, 0px 0px 1px black;
+    background-color: transparent;
+    cursor: pointer;
+    --beforeLeft: -30%;
+    --afterLeft: 130%;
+    --opacity: 0;
+    --color: black;
+
+
+    .btnbg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        height: 100%;
+        width: 100%;
+        scale: 0.5;
+        opacity: 0;
+        border-radius: 5px;
+        background-color: var(--color);
+    }
+
+    &::before,
+    &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        z-index: -2;
+        display: block;
+        height: 30px;
+        width: 30px;
+        transform: translate(-50%, -50%);
+
+        border-radius: 50%;
+        background-color: var(--color);
+    }
+
+    &::before {
+        left: var(--beforeLeft);
+        opacity: var(--opacity);
+    }
+
+    &::after {
+        left: var(--afterLeft);
+        opacity: var(--opacity);
+    }
+}
+.btn2 {
+    position: relative;
+    cursor: pointer;
+    z-index: 5;
+    overflow: hidden;
+    border: 1px solid rgba(151, 151, 151, 0.9);
+    outline: none;
+    background-color: var(--color2);
+    --rot: -100deg;
+    
+    
+    &:before {
+        position: absolute;
+        border: 0.5px solid rgba(151, 151, 151, 0.7);
+        content: "";
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        height: 10rem;
+        width: 10rem;
+        rotate: var(--rot);
+        transform-origin: bottom right;
+        background-color: var(--black);
+    }
+
+
+}

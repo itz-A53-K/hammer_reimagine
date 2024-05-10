@@ -1,24 +1,23 @@
 (function () {
-    const locomotiveScroll = new LocomotiveScroll();
-})();
+    const locomotiveScroll = new LocomotiveScroll({
+       lenisOptions: {
+          smoothWheel: true,
+          smoothTouch: true,
+          wheelMultiplier: 0.4,
+          touchMultiplier: 0.8,
+          easing: 'ease',
+ 
+       }
+    });
+ })();
 
-btnAnimations()
-navAnimation()
 
 function navAnimation() {
 
-    var tl, isFinish = true
+    $("nav .navLink.dropdown").each(function () {
 
-    function setTimeLine(elemID) {
-
-        tl = gsap.timeline({
-            paused: true,
-            onStart: () => { isFinish = false },
-            onReverseComplete: () => {
-                $('nav .navLink').removeClass('active')
-                isFinish = true
-            }
-        })
+        var dropdown = $(this)
+        var tl = gsap.timeline({ paused: true })
 
         tl.to("nav .dropdown-bg ", {
             height: 'calc(100vh - 65px)',
@@ -26,77 +25,34 @@ function navAnimation() {
             duration: 0.3,
         })
 
-        tl.to(`#${elemID} .dropdownCont`, {
+        tl.to(dropdown.children('.dropdownCont'), {
             maxHeight: '65vh',
             padding: '1.5rem ',
-            duration: 0.3,
-            delay: 0.05
+            duration: 0.2,
         })
-        tl.to(`nav .dropdownCont h1`, {
+        tl.to(dropdown.find('.dropdownCont h1'), {
             y: 0,
-            duration: 0.3,
             opacity: 1,
+            duration: 0.3,
             stagger: 0.05,
 
         })
-    }
 
+        dropdown.hover(
+            function () {
+                tl.play()
+            },
+            function () {
+                tl.reverse()
+            }
+        )
 
-    $("nav .navLink.dropdown").mouseenter(function () {
-
-        if (!$(this).hasClass('active') && isFinish) {
-            $(this).addClass('active')
-            setTimeLine($(this).attr('id'))
-            tl.play()
-        }
     })
 
-    var menuClose_triggerElem = [$("nav .navLink:not(.dropdown)"), $("nav .contRight"), $('nav .dropdown-bg')]
-    menuClose_triggerElem.forEach(function (elem) {
-        elem.mouseenter(() => { tl.reverse() })
-    })
 
 }
 
-function btnAnimations() {
 
-    //btn animation 1
-    $(".btn1").html($(".btn1").html() + '<div class="btnbg"></div>')
-    var btn1TL = gsap.timeline({ paused: true })
-    btn1TL.to(".btn1", {
-        '--beforeLeft': '50%',
-        '--afterLeft': '50%',
-        "--opacity": 1,
-        duration: 0.2,
-    })
-    btn1TL.to(".btn1 .btnbg", {
-        scale: 1,
-        opacity: 1,
-        duration: 0.15,
-    }, 'a')
-    btn1TL.to(".btn1 ", {
-        color: 'white',
-        gap: '1rem',
-        duration: 0.15,
-    }, 'a')
-
-
-
-
-    $(".btn1").hover(
-        function () {
-            btn1TL.play()
-        },
-        function () {
-            btn1TL.reverse()
-        }
-    )
-}
-
-
-//img silder
-
-// call showslide method
 const sleep = (time) => {
     return new Promise((resolve) => setTimeout(resolve, time))
 }
@@ -105,21 +61,21 @@ async function showSlides() {
 
     let slides = $("#home .sliderItem");
 
-    for (let i = slides.length -1; i >=0; i--) {
+    for (let i = slides.length - 1; i >= 0; i--) {
 
         let j = i - 1
-        if (j <0) { j = slides.length-1 }
+        if (j < 0) { j = slides.length - 1 }
 
         let curSlide = $(slides[i])
         let nextSlide = $(slides[j])
 
-        await sleep(8000)
+        await sleep(5000)
 
         nextSlide.addClass("active")
 
-        let tl=gsap.timeline()
+        let tl = gsap.timeline()
         tl.to(curSlide, {
-            scale: 0,
+            scale: 2,
             opacity: 0,
             duration: 0.5,
             onComplete: () => {
@@ -139,4 +95,81 @@ async function showSlides() {
 
 }
 
-showSlides();
+
+function populateCard() {
+    var data = [
+        {
+            'bg': 'smart_watch.webp',
+            'theme': '',
+            'h4': 'Smart Watches',
+            'p': 'Bluetooth Calling Smartwatch'
+        },
+        {
+            'bg': 'wireless_headphones.webp',
+            'theme': '',
+            'h4': 'Headphones',
+            'p': 'Hammer Bluetooth Headphones'
+        },
+        {
+            'bg': 'tootbrush.webp',
+            'theme': 'light',
+            'h4': 'Electric Toothbrushes',
+            'p': 'Hammer Electric Toothbrush'
+        },
+        {
+            'bg': 'TWS.webp',
+            'theme': '',
+            'h4': 'True Wireless Earbuds',
+            'p': 'Hammer True Wireless Earbuds'
+        },
+    ]
+
+    data.forEach(function (item) {
+
+        var card = `<div class="cardCont">
+                    <div class="card" data-bg="${item.bg}" th="${item.theme}">
+                        <h4>${item.h4}</h4>
+                        <div class="cardFooter">
+                            <p>${item.p}</p>
+                            <button class="btn2">Buy Now</button>
+                        </div>            
+                    </div>
+                </div>`
+
+        $("#topCategory .container").append(card)
+    })
+}
+
+
+function topCategory() {
+    populateCard()
+
+    var cardCont = $("#topCategory .cardCont");
+
+    cardCont.each(function () {
+        card = $(this).children(".card")
+
+        card.css('background-image', `url('./img/topCategory/${card.data('bg')}')`)
+
+    });
+
+
+    gsap.to(cardCont, {
+        x: -(cardCont.length - 2) * 100 + '%',
+
+        scrollTrigger: {
+            trigger: "#topCategory",
+            start: "top top",
+            end: `bottom -${cardCont.length / 2 * 100}%`,
+            pin: true,
+            scrub: 2
+        }
+    })
+}
+
+
+
+navAnimation()
+showSlides()
+topCategory()
+

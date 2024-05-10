@@ -5,6 +5,7 @@
     --white: #fff;
     --black: #000;
     --color1: #F1559B;
+    --color2: #dadada;
 
     --font1: 'Poppins', sans-serif;
 }
@@ -28,69 +29,6 @@ html {
 
 #main {
     padding: 0 3rem;
-}
-
-
-.btn1 {
-    height: 3.5rem;
-    width: 12rem;
-    margin: 2rem 1rem;
-    font-weight: 700;
-    font-size: 1.5em;
-    border-radius: 10px;
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-
-    box-shadow: -0.5px 2px 1px black, 01px 2px 1px black, 0px 0px 1px black;
-    background-color: transparent;
-    cursor: pointer;
-    --beforeLeft: -30%;
-    --afterLeft: 130%;
-    --opacity: 0;
-    --color: black;
-
-
-    .btnbg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: -1;
-        height: 100%;
-        width: 100%;
-        scale: 0.5;
-        opacity: 0;
-        border-radius: 5px;
-        background-color: var(--color);
-    }
-
-    &::before,
-    &:after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        z-index: -2;
-        display: block;
-        height: 30px;
-        width: 30px;
-        transform: translate(-50%, -50%);
-        
-        border-radius: 50%;
-        background-color: var(--color);
-    }
-
-    &::before {
-        left: var(--beforeLeft);
-        opacity: var(--opacity);
-    }
-
-    &::after {
-        left: var(--afterLeft);
-        opacity: var(--opacity);
-    }
 }
 
 
@@ -276,7 +214,7 @@ nav .dropdown-bg {
     width: 100%;
     display: flex;
     border: 0.5px solid #747373;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
 
     .contLeft {
         width: 35%;
@@ -304,22 +242,22 @@ nav .dropdown-bg {
             }
         }
 
-       
+
     }
 
     .contRight {
         width: 65%;
         height: 100%;
-        padding: 1rem ;
+        padding: 1rem;
 
-        .slider{
+        .slider {
             width: 100%;
             height: 100%;
             display: flex;
             overflow: hidden;
             position: relative;
 
-            .sliderItem{
+            .sliderItem {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -328,21 +266,97 @@ nav .dropdown-bg {
                 flex-shrink: 0;
                 display: none;
 
-                img{
+                img {
                     width: 100%;
                     height: 100%;
                     object-fit: fill;
                 }
             }
 
-            .active{
+            .active {
                 display: flex !important;
                 z-index: 1;
             }
-            .zHigh{
+
+            .zHigh {
                 z-index: 2;
             }
         }
     }
 }
 
+
+#topCategory {
+    height: 100vh;
+    width: 100%;
+    padding: 2vw 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    >h1 {
+        font-size: 3rem;
+    }
+
+    .container {
+        height: 85%;
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+
+        .cardCont{
+            flex-shrink: 0;
+            width: 50%;
+            padding: 0 1rem;
+        }        
+
+        .card {
+            height: 100%;
+            width: 100%;
+            background: no-repeat top center;
+            background-size: cover;
+            border: 0.5px solid rgba(194, 194, 194, 0.45);
+            border-radius: 5px;
+           
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            color: var(--color2);
+            
+            h4{
+                /* mix-blend-mode: difference; */
+                font-size: 2rem;
+            }
+
+            .cardFooter{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+
+                p{
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                }
+            }
+
+            button{
+                border-radius: 10px;
+                padding: 10px 20px;
+                cursor: pointer;
+                font-weight: 600;
+            }
+        }
+
+        .card[th="light"]{
+            color: var(--black) !important;
+            p{
+                font-weight: 600;
+            }
+        }
+    }
+
+}
