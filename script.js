@@ -1,15 +1,15 @@
 (function () {
     const locomotiveScroll = new LocomotiveScroll({
-       lenisOptions: {
-          smoothWheel: true,
-          smoothTouch: true,
-          wheelMultiplier: 0.4,
-          touchMultiplier: 0.8,
-          easing: 'ease',
- 
-       }
+        lenisOptions: {
+            smoothWheel: true,
+            smoothTouch: true,
+            wheelMultiplier: 0.4,
+            touchMultiplier: 0.8,
+            easing: 'none',
+
+        }
     });
- })();
+})();
 
 
 function navAnimation() {
@@ -167,8 +167,67 @@ function topCategory() {
     })
 }
 
+function stripAnim() {
+
+    var ply = revply = false
+
+    $(window).on('wheel', function (dets) {
+
+        var deltaY = dets.originalEvent.deltaY
+
+        if (deltaY > 0) {
+            if (ply == false) {
+                ply = true
+                revply = false
+                gsap.fromTo("#strip .container",
+                    {
+                        transform: 'translateX(0%)',
+                        duration: 10,
+                        repeat: -1,
+                        ease: "none"
+                    },
+                    {
+                        transform: 'translateX(-100%)',
+                        duration: 10,
+                        repeat: -1,
+                        ease: "none"
+                    },
+                )
+                $("#strip .container div>img").removeClass('reverse')
+            }
+
+        }
+        else {
+            if (revply == false) {
+                revply = true
+                ply = false
+                gsap.fromTo("#strip .container",
+                    {
+                        transform: 'translateX(-100%)',
+                        duration: 10,
+                        repeat: -1,
+                        ease: "none"
+                    },
+                    {
+                        transform: 'translateX(0%)',
+                        duration: 10,
+                        repeat: -1,
+                        ease: "none"
+                    },
+                )
+
+                $("#strip .container div>img").addClass('reverse')
+            }
+        }
 
 
+
+    });
+
+}
+
+
+stripAnim()
 navAnimation()
 showSlides()
 topCategory()

@@ -6,6 +6,8 @@
     --black: #000;
     --color1: #F1559B;
     --color2: #dadada;
+    --color3: #F6CEB7;
+    --color4: #8C99D6;
 
     --font1: 'Poppins', sans-serif;
 }
@@ -27,13 +29,14 @@ html {
     display: none !important;
 }
 
-#main {
-    padding: 0 3rem;
+
+section, nav{
+    margin: 0 3rem;
+    width: calc( 100% - 6rem);
 }
 
 
 nav {
-    width: 100%;
     height: 80px;
     position: relative;
     background-color: #fff;
@@ -211,7 +214,6 @@ nav .dropdown-bg {
 
 #home {
     height: calc(100vh - 100px);
-    width: 100%;
     display: flex;
     border: 0.5px solid #747373;
     margin-bottom: 3rem;
@@ -288,7 +290,6 @@ nav .dropdown-bg {
 
 #topCategory {
     height: 100vh;
-    width: 100%;
     padding: 2vw 0;
     display: flex;
     flex-direction: column;
@@ -359,4 +360,70 @@ nav .dropdown-bg {
         }
     }
 
+}
+
+
+#strip{
+    /* height: 15rem; */
+    width: 100%;
+    margin: 5rem 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: rgb(48, 43, 43);
+    padding: 15px 0;
+    
+    .container{
+        display: flex;
+        align-items: center;
+
+
+        >div{
+            display: flex;
+            align-items: center;
+            width: 30rem;
+            justify-content: space-around;     
+            
+            
+            h1{
+                gap: 1rem;
+                font-size: 3.5rem;
+                display: flex;
+                align-items: center;     
+
+                img{
+                    height: 4rem;  
+                }
+            }
+            
+            >img{            
+                height: 2rem;
+                rotate: 180deg;
+                transition: 0.5s all ease-in-out;
+            }
+            >img.reverse{
+                rotate: 0deg;
+            }
+
+            i{
+                font-size: 1.8em;
+                color: var(--color2);
+            }
+
+
+            &:nth-child(1) h1{
+                color: var(--color1);
+            }
+            &:nth-child(2) h1{
+                color: var(--color3);
+            }
+            &:nth-child(3) h1{
+                color: var(--white);
+            }
+            &:nth-child(4) h1{
+                color: var(--color4);
+            }
+        }
+
+    }
 }
