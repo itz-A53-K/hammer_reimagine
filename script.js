@@ -227,8 +227,59 @@ function stripAnim() {
 }
 
 
+
+function compareAmoled() {
+    var img = $(".img-comp-overlay")
+    var w = img.width()
+
+    img.css({ width: w / 2 + 'px' })
+
+    var slider = $("#amoled .slider")
+
+    slider.css({ left: w / 2 + 'px' })
+
+    slider.on({
+        mousedown: function (e) {
+            e.preventDefault()
+            $("#amoled").on("mousemove touchmove", sliderMove)
+            slider.data("clicked", true);
+        },
+        mouseup: function () {
+            $("#amoled").off("mousemove touchmove", sliderMove);
+            slider.data("clicked", false);
+        },
+        touchend: function () {
+            slider.data("clicked", false);
+            $(window).off("mousemove touchmove", slideMove);
+        },
+    })
+
+    function sliderMove(e) {
+        if (!slider.data("clicked")) return;
+
+        var pos = e.pageX - img.offset().left
+
+        if (pos < 0) pos = 0;
+        if (pos > w) pos = w;
+
+        slider.css({ left: img.width() - slider.width() / 2 + "px" });
+        img.css({ width: pos + "px" });
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
 stripAnim()
 navAnimation()
 showSlides()
 topCategory()
+compareAmoled()
 

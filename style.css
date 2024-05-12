@@ -30,9 +30,10 @@ html {
 }
 
 
-section, nav{
+section,
+nav {
     margin: 0 3rem;
-    width: calc( 100% - 6rem);
+    width: calc(100% - 6rem);
 }
 
 
@@ -306,11 +307,11 @@ nav .dropdown-bg {
         overflow: hidden;
         margin-bottom: 1.5rem;
 
-        .cardCont{
+        .cardCont {
             flex-shrink: 0;
             width: 50%;
             padding: 0 1rem;
-        }        
+        }
 
         .card {
             height: 100%;
@@ -319,32 +320,32 @@ nav .dropdown-bg {
             background-size: cover;
             border: 0.5px solid rgba(194, 194, 194, 0.45);
             border-radius: 5px;
-           
+
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
             padding: 2rem;
             color: var(--color2);
-            
-            h4{
+
+            h4 {
                 /* mix-blend-mode: difference; */
                 font-size: 2rem;
             }
 
-            .cardFooter{
+            .cardFooter {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
 
-                p{
+                p {
                     font-size: 1.2rem;
                     font-weight: 500;
                 }
             }
 
-            button{
+            button {
                 border-radius: 10px;
                 padding: 10px 20px;
                 cursor: pointer;
@@ -352,9 +353,10 @@ nav .dropdown-bg {
             }
         }
 
-        .card[th="light"]{
+        .card[th="light"] {
             color: var(--black) !important;
-            p{
+
+            p {
                 font-weight: 600;
             }
         }
@@ -363,7 +365,7 @@ nav .dropdown-bg {
 }
 
 
-#strip{
+#strip {
     /* height: 15rem; */
     width: 100%;
     margin: 5rem 0;
@@ -372,58 +374,108 @@ nav .dropdown-bg {
     overflow: hidden;
     background-color: rgb(48, 43, 43);
     padding: 15px 0;
-    
-    .container{
+
+    .container {
         display: flex;
         align-items: center;
 
 
-        >div{
+        >div {
             display: flex;
             align-items: center;
             width: 30rem;
-            justify-content: space-around;     
-            
-            
-            h1{
+            justify-content: space-around;
+
+
+            h1 {
                 gap: 1rem;
                 font-size: 3.5rem;
                 display: flex;
-                align-items: center;     
+                align-items: center;
 
-                img{
-                    height: 4rem;  
+                img {
+                    height: 4rem;
                 }
             }
-            
-            >img{            
+
+            >img {
                 height: 2rem;
                 rotate: 180deg;
                 transition: 0.5s all ease-in-out;
             }
-            >img.reverse{
+
+            >img.reverse {
                 rotate: 0deg;
             }
 
-            i{
+            i {
                 font-size: 1.8em;
                 color: var(--color2);
             }
 
 
-            &:nth-child(1) h1{
+            &:nth-child(1) h1 {
                 color: var(--color1);
             }
-            &:nth-child(2) h1{
+
+            &:nth-child(2) h1 {
                 color: var(--color3);
             }
-            &:nth-child(3) h1{
+
+            &:nth-child(3) h1 {
                 color: var(--white);
             }
-            &:nth-child(4) h1{
+
+            &:nth-child(4) h1 {
                 color: var(--color4);
             }
         }
 
+    }
+}
+
+
+#amoled {
+    .container {
+        width: 100%;
+        height: 25rem;
+        background-color: red;
+        position: relative;
+        overflow: hidden;
+
+        .img-comp {
+            width: auto;
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+
+            img {
+                height: 100%;
+                object-fit: cover;
+                vertical-align: middle;
+            }
+        }
+
+        .slider{
+            position: absolute;
+            z-index: 9;
+            width: 2px;
+            height: 100%;
+            background-color: var(--white);
+            cursor: e-resize;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.6;
+
+            .circle{
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: var(--color2);
+                /* opacity: 1; */
+            }
+        }
     }
 }
