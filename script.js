@@ -250,7 +250,7 @@ function compareAmoled() {
         },
         touchend: function () {
             slider.data("clicked", false);
-            $(window).off("mousemove touchmove", slideMove);
+            $("#amoled").off("mousemove touchmove", slideMove);
         },
     })
 
