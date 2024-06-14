@@ -50,6 +50,38 @@ function navAnimation() {
     })
 
 
+    //hamburger menu
+
+    var tl_menuSM= gsap.timeline({paused: true})
+
+    tl_menuSM.to("nav .menu-sm",{
+        right: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: 'ease.inOut'
+    })
+    tl_menuSM.from("nav .menu-sm .contTop i",{
+        opacity: 0,
+        delay: 0.2,
+        duration: 0.2,
+        stagger: 0.1
+    })
+    tl_menuSM.from("nav .menu-sm .navLink h1",{
+        rotate: '50deg',
+        y: '100%',
+        opacity: 0,
+        duration: 0.2,
+        stagger: 0.1
+    })
+
+    $("#hamburger").click(function(){
+        tl_menuSM.play()
+    })
+    $("nav .menu-sm .close-menu-sm").click(function(){
+        tl_menuSM.reverse()
+    })
+
+
 }
 
 
@@ -99,7 +131,7 @@ async function showSlides() {
 function populateCard() {
     var data = [
         {
-            'bg': 'smart_watch.webp',
+            'bg': 'smartwatch.webp',
             'theme': '',
             'h4': 'Smart Watches',
             'p': 'Bluetooth Calling Smartwatch'
@@ -160,7 +192,7 @@ function topCategory() {
         scrollTrigger: {
             trigger: "#topCategory",
             start: "top top",
-            end: `bottom -${cardCont.length / 2 * 100}%`,
+            end: `bottom 0%`,
             pin: true,
             scrub: 2
         }
@@ -232,26 +264,27 @@ function compareAmoled() {
     var img = $(".img-comp-overlay")
     var w = img.width()
 
+
     img.css({ width: w / 2 + 'px' })
+    img.children("img").css({ width: w + 'px' })
 
     var slider = $("#amoled .slider")
 
-    slider.css({ left: w / 2 + 'px' })
+    slider.css("left", w / 2 + 'px' )
 
-    slider.on({
-        mousedown: function (e) {
-            e.preventDefault()
-            $("#amoled").on("mousemove touchmove", sliderMove)
-            slider.data("clicked", true);
-        },
-        mouseup: function () {
-            $("#amoled").off("mousemove touchmove", sliderMove);
-            slider.data("clicked", false);
-        },
-        touchend: function () {
-            slider.data("clicked", false);
-            $("#amoled").off("mousemove touchmove", slideMove);
-        },
+    slider.on("mousedown touchstart", function (e) {
+        e.preventDefault()
+        $("#amoled").on("mousemove touchmove", sliderMove)
+        slider.data("clicked", true);
+    })
+    slider.on("mouseup touchend", function (e) {
+        e.preventDefault()
+        $("#amoled").off("mousemove touchmove", sliderMove);
+        slider.data("clicked", false);
+    })
+    $("#amoled .container").on("mouseleave", function(){
+        slider.data("clicked", false);
+
     })
 
     function sliderMove(e) {

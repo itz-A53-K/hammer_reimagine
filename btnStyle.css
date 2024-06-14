@@ -1,10 +1,11 @@
-
+button{
+    cursor: pointer;
+}
 .btn1 {
     height: 3.5rem;
     width: 12rem;
     margin: 2rem 1rem;
-    font-weight: 700;
-    font-size: 1.5em;
+    
     border-radius: 10px;
     position: relative;
 
@@ -13,20 +14,25 @@
     justify-content: center;
     gap: 0.5rem;
 
-    box-shadow: -0.5px 2px 1px black, 01px 2px 1px black, 0px 0px 1px black;
+    box-shadow: -0.5px 2px 1px black, 1px 2px 1px black, 0px 0px 1px black;
     background-color: transparent;
     cursor: pointer;
     --beforeLeft: -30%;
     --afterLeft: 130%;
     --opacity: 0;
     --color: black;
+    h4{
+        z-index: 10;
+        font-weight: 700;
+        font-size: 1.5em;
+    }
 
 
     .btnbg {
         position: absolute;
         left: 0;
         top: 0;
-        z-index: -1;
+        z-index: 5;
         height: 100%;
         width: 100%;
         scale: 0.5;
@@ -40,7 +46,7 @@
         content: "";
         position: absolute;
         top: 50%;
-        z-index: -2;
+        z-index: 2;
         display: block;
         height: 30px;
         width: 30px;
