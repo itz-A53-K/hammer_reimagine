@@ -193,6 +193,7 @@
         .card {
             width: 75%;
             height: 24rem;
+            background: red;
 
             img {
                 height: 48%;
