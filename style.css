@@ -411,7 +411,7 @@ nav .menu-sm {
             color: var(--color2);
 
             h4 {
-                /* mix-blend-mode: difference; */
+                text-align: center;
                 font-size: 2rem;
             }
 

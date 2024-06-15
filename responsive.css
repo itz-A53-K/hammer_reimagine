@@ -16,6 +16,9 @@
                 width: 100%;
                 padding: 0 0.2rem;
             }
+            .card[th='light']{
+                background-position: top right 45%;
+            }
         }
     }
 
@@ -115,7 +118,7 @@
 
         .contLeft {
             width: 100%;
-            padding: 0.7rem;
+            padding: 0.85rem;
             padding-bottom: 0;
             height: 40%;
 
@@ -125,7 +128,7 @@
 
             h1 {
                 font-size: 2.5em;
-                width: 85%;
+                width: 95%;
             }
         }
 
@@ -142,7 +145,7 @@
 
             h4 {
                 font-weight: 600;
-                font-size: 1em;
+                font-size: 1.2em;
             }
         }
     }

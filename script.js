@@ -185,9 +185,16 @@ function topCategory() {
 
     });
 
+    var x = window.matchMedia("(max-width: 900px)")
+    if (x.matches) { 
+        var minusV = 1
+    } else {
+        var minusV = 2
+      }
+
 
     gsap.to(cardCont, {
-        x: -(cardCont.length - 2) * 100 + '%',
+        x: -(cardCont.length - minusV) * 100 + '%',
 
         scrollTrigger: {
             trigger: "#topCategory",
