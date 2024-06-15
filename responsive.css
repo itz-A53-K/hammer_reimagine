@@ -1,7 +1,5 @@
-/* @media (max-width: 900px) {
-
+@media (max-width: 900px) {
     nav {
-
         .navMenu {
             display: none !important;
         }
@@ -16,81 +14,13 @@
         & .container {
             .cardCont {
                 width: 100%;
+                padding: 0 0.2rem;
             }
         }
     }
 
 
 }
-
-
-@media (max-width: 450px) {
-
-    section,
-    nav {
-        margin: 2rem 1rem;
-    }
-
-    nav {
-        .contLeft {
-            .logo {
-                width: 7rem;
-            }
-        }
-
-        .contRight {
-            gap: 1.5rem;
-
-
-            .btn:not(:nth-last-child(2)){
-                display: none;
-            }
-        }
-    }
-
-    #home{
-        flex-direction: column;
-
-        .contLeft{
-            width: 100%;
-            padding: 1rem;
-            height: 45%;
-
-            .logo{
-                width: 8rem;
-            }
-
-            h1{
-                font-size: 2.5em;
-            }
-        }
-        .contRight{
-            width: 100%;
-            height: 55%;
-        }
-
-        .btn1{
-            margin: 0.8rem;
-            font-size: 1.05em;
-            height: 2.6rem;
-            width: 9rem;
-        }
-    }
-
-    #collection {
-
-        .container {
-            width: 100%;
-            height: 85%;
-    
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem ;
-            justify-content: center;
-    
-        }
-    }
-} */
 
 
 
@@ -120,9 +50,6 @@
         --sec_mx: 1rem;
     }
 
-    nav,
-    #home,
-    #topCategory,
     #strip,
     #amoled {
         display: none;
@@ -133,12 +60,15 @@
         width: calc(100% - 2rem);
     }
 
-    #findStyle {
 
+
+
+    #findStyle {
         .card-lg h2 {
             width: 15rem;
         }
-        .cardCont a .btn{
+
+        .cardCont a .btn {
             bottom: 5%;
             opacity: 1;
         }
@@ -180,10 +110,52 @@
         font-size: 2.3rem;
     }
 
+    #home {
+        flex-direction: column;
+
+        .contLeft {
+            width: 100%;
+            padding: 0.7rem;
+            padding-bottom: 0;
+            height: 40%;
+
+            .logo {
+                width: 8rem;
+            }
+
+            h1 {
+                font-size: 2.5em;
+                width: 85%;
+            }
+        }
+
+        .contRight {
+            width: 100%;
+            height: 60%;
+            padding: 0.7rem;
+        }
+
+        .btn1 {
+            margin: 0.8rem 0;
+            height: 2.7rem;
+            width: 10rem;
+
+            h4 {
+                font-weight: 600;
+                font-size: 1em;
+            }
+        }
+    }
+
     #findStyle {
         .container {
             gap: 0.5rem;
             padding: 0.5rem;
+        }
+
+        .card-lg {
+            height: 80vh;
+            padding: 2rem;
         }
 
         .cardCont {
@@ -197,7 +169,7 @@
     }
 
     .banner .container {
-        height: 35rem;
+        height: 33rem;
 
         .bImg {
             display: none;
@@ -233,26 +205,62 @@
                 font-size: 1em;
             }
 
-           
+
 
         }
     }
 
     .cardV {
-        height: 8rem !important;
+        height: 6rem !important;
+
+        h2 {
+            font-size: 1.2em;
+        }
     }
 }
 
 /* Mobile Breakpoint (400px) */
 @media (max-width: 430px) {
+
+    nav {
+        .contLeft {
+            .logo {
+                width: 7rem;
+            }
+        }
+
+        .contRight {
+            gap: 1.5rem;
+
+
+            .btn:not(:nth-last-child(2)) {
+                display: none;
+            }
+        }
+    }
+
+    #home .contLeft {
+        .logo {
+            width: 5rem;
+        }
+
+        h1 {
+            font-size: 2.3em;
+            width: 95%;
+        }
+    }
+
+
+
     #findStyle {
         .card-lg {
             padding: 2rem 1rem;
-            height: 60vh;
+            height: 68vh;
 
             h2 {
                 font-size: 2rem;
                 width: 12rem;
+                line-height: 30px;
             }
 
             .btn {
