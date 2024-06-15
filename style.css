@@ -578,7 +578,7 @@ nav .menu-sm {
         height: 90vh;
         width: 45%;
         padding: 3rem 2rem;
-        background: url("/img/findStyle/cardLG_BG_model.webp") center left 37% no-repeat;
+        background: url("img/findStyle/cardLG_BG_model.webp") center left 37% no-repeat;
         border-radius: 10px;
 
         h2 {
