@@ -193,7 +193,6 @@
         .card {
             width: 80%;
             height: 24rem;
-            background: red;
 
             img {
                 height: 48%;
@@ -282,7 +281,6 @@
             width: 90%;
             gap: 0.05rem;
             height: 18rem;
-            background: green;
 
             .buyBtn {
                 padding: 8px;
