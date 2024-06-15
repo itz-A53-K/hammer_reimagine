@@ -52,21 +52,21 @@ function navAnimation() {
 
     //hamburger menu
 
-    var tl_menuSM= gsap.timeline({paused: true})
+    var tl_menuSM = gsap.timeline({ paused: true })
 
-    tl_menuSM.to("nav .menu-sm",{
+    tl_menuSM.to("nav .menu-sm", {
         right: 0,
         opacity: 1,
         duration: 0.7,
         ease: 'ease.inOut'
     })
-    tl_menuSM.from("nav .menu-sm .contTop i",{
+    tl_menuSM.from("nav .menu-sm .contTop i", {
         opacity: 0,
         delay: 0.2,
         duration: 0.2,
         stagger: 0.1
     })
-    tl_menuSM.from("nav .menu-sm .navLink h1",{
+    tl_menuSM.from("nav .menu-sm .navLink h1", {
         rotate: '50deg',
         y: '100%',
         opacity: 0,
@@ -74,10 +74,10 @@ function navAnimation() {
         stagger: 0.1
     })
 
-    $("#hamburger").click(function(){
+    $("#hamburger").click(function () {
         tl_menuSM.play()
     })
-    $("nav .menu-sm .close-menu-sm").click(function(){
+    $("nav .menu-sm .close-menu-sm").click(function () {
         tl_menuSM.reverse()
     })
 
@@ -270,19 +270,21 @@ function compareAmoled() {
 
     var slider = $("#amoled .slider")
 
-    slider.css("left", w / 2 + 'px' )
+    slider.css("left", w / 2 + 'px')
 
     slider.on("mousedown touchstart", function (e) {
         e.preventDefault()
         $("#amoled").on("mousemove touchmove", sliderMove)
         slider.data("clicked", true);
     })
+    
     slider.on("mouseup touchend", function (e) {
         e.preventDefault()
         $("#amoled").off("mousemove touchmove", sliderMove);
         slider.data("clicked", false);
     })
-    $("#amoled .container").on("mouseleave", function(){
+
+    $("#amoled .container").on("mouseleave", function () {
         slider.data("clicked", false);
 
     })
@@ -303,6 +305,89 @@ function compareAmoled() {
 }
 
 
+function populate_fCollection() {
+
+    var cardData = [
+        // {
+        //     "imgUrl": "ArcticSmartwatch.webp",
+        //     "pName": "arctic",
+        //     "price": '8,999',
+        //     "dPrice": '2,499',
+        //     "colors": ["#b99e61","#393c48","black"],
+        //     "desc": '2.04" Super Amoled | BT Calling'
+        // },
+        {
+            "imgUrl": "steller_Earbuds.webp",
+            "pName": "stellar",
+            "price": '5,999',
+            "dPrice": '1,599',
+            "colors": ["#e1d9d3"],
+            "desc": 'ENC + Quad Mics'
+        },
+        // {
+        //     "imgUrl": "Screen_TWS_Earbuds.webp",
+        //     "pName": "screen tws",
+        //     "price": '8,999',
+        //     "dPrice": '2,799',
+        //     "colors": ["#fff"],
+        //     "desc": 'ANC + ENC | Touch Screen'
+        // },
+        {
+            "imgUrl": "BluetoothNeckbands.webp",
+            "pName": "splendor",
+            "price": '2,499',
+            "dPrice": '699',
+            "colors": ["#000"],
+            "desc": 'Bluetooth Neckbands'
+        },
+        {
+            "imgUrl": "CycloneSmartwatch.webp",
+            "pName": "cyclone",
+            "price": '5,999',
+            "dPrice": '1,599',
+            "colors": ["#eec3b2","black","#252b3b","#ccd0d1"],
+            "desc": '1.39" Screen | BT Calling'
+        },
+       
+        {
+            "imgUrl": "blaze_GamingHeaphone.webp",
+            "pName": "blaze",
+            "price": '8,999',
+            "dPrice": '2,499',
+            "colors": ["#111", "gray"],
+            "desc": '50mm Drivers | RGB Lights'
+        },
+        {
+            "imgUrl": "soundbar.webp",
+            "pName": "beatbox",
+            "price": '5,999',
+            "dPrice": '1,599',
+            "colors": ["#111"],
+            "desc": '24W Output | 8 Hours Playtime'
+        },
+    ]
+
+    cardData.forEach((data) => {
+        var allColor=''
+        data.colors.forEach((color)=>{
+            allColor +=`<span style="--color: ${color};"></span>`
+        })
+        var card = `<div class="card">
+                    <img src="img/fCollection/${data.imgUrl}" alt="${data.imgUrl}">
+
+                    <h2 class="pName">${data.pName}</h2>
+                    <div><span class="dPrice">Rs. ${data.dPrice}.00</span> <span class="price">Rs. ${data.price}.00</span></div>
+                    <div class="colors"> ${allColor}</div>
+                    <h4 class="desc">${data.desc}</h4>
+
+                    <button class="buyBtn btn2">Grab Now</button>
+                </div>`
+
+        $("#collection .container").append(card)
+    })
+    $("#collection .container").append(`<div class="card cardV"><h2>View All</h2><i class="ri-arrow-right-fill"></i></div>`)
+}
+
 
 
 
@@ -315,4 +400,5 @@ navAnimation()
 showSlides()
 topCategory()
 compareAmoled()
+populate_fCollection()
 
