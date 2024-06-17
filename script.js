@@ -12,18 +12,18 @@
 })();
 
 loaderAnimation()
-window.onload=function(){
+window.onload = function () {
 
     setTimeout(() => {
-        gsap.to("#loader",{
+        gsap.to("#loader", {
             y: "-100%",
             // onStart:()=>{
             //     $("body").css("height", "100%").css("overflow","visible")                
             // }
         })
-        
+
     }, 5000);
-    
+
 }
 
 function navAnimation() {
@@ -200,11 +200,11 @@ function topCategory() {
     });
 
     var x = window.matchMedia("(max-width: 900px)")
-    if (x.matches) { 
+    if (x.matches) {
         var minusV = 1
     } else {
         var minusV = 2
-      }
+    }
 
 
     gsap.to(cardCont, {
@@ -220,40 +220,51 @@ function topCategory() {
     })
 }
 
+
 function stripAnim() {
 
-    var ply = revply = false
+    var play = revplay = false
+    var lastY = null
 
     $(window).on('wheel', function (dets) {
-
         var deltaY = dets.originalEvent.deltaY
+        animationController(deltaY)
+    });
+    $(window).on('touchmove', function (dets) {
+        const currentY = dets.originalEvent.changedTouches[0].clientY;
 
-        if (deltaY > 0) {
-            if (ply == false) {
-                ply = true
-                revply = false
-                gsap.fromTo("#strip .container",
-                    {
-                        transform: 'translateX(0%)',
-                        duration: 10,
-                        repeat: -1,
-                        ease: "none"
-                    },
-                    {
-                        transform: 'translateX(-100%)',
-                        duration: 10,
-                        repeat: -1,
-                        ease: "none"
-                    },
-                )
-                $("#strip .container div>img").removeClass('reverse')
-            }
+        if (lastY !== null) {
+            const deltaY = currentY - lastY;
+            animationController(deltaY)
+        }
+        lastY = currentY
+    });
 
+    function animationController(deltaY) {
+
+        if (deltaY > 0 && !play) {
+            play = true
+            revplay = false
+            gsap.fromTo("#strip .container",
+                {
+                    transform: 'translateX(0%)',
+                    duration: 10,
+                    repeat: -1,
+                    ease: "none"
+                },
+                {
+                    transform: 'translateX(-100%)',
+                    duration: 10,
+                    repeat: -1,
+                    ease: "none"
+                },
+            )
+            $("#strip .container div>img").removeClass('reverse')
         }
         else {
-            if (revply == false) {
-                revply = true
-                ply = false
+            if (revplay == false) {
+                revplay = true
+                play = false
                 gsap.fromTo("#strip .container",
                     {
                         transform: 'translateX(-100%)',
@@ -272,13 +283,8 @@ function stripAnim() {
                 $("#strip .container div>img").addClass('reverse')
             }
         }
-
-
-
-    });
-
+    }
 }
-
 
 
 function compareAmoled() {
@@ -295,13 +301,15 @@ function compareAmoled() {
 
     slider.on("mousedown touchstart", function (e) {
         e.preventDefault()
-        $("#amoled").on("mousemove touchmove", sliderMove)
+        $("#amoled").on("mousemove", sliderMove)
+        $("#amoled").on("touchmove", sliderMove)
         slider.data("clicked", true);
     })
-    
+
     slider.on("mouseup touchend", function (e) {
         e.preventDefault()
-        $("#amoled").off("mousemove touchmove", sliderMove);
+        $("#amoled").off("mousemove", sliderMove);
+        $("#amoled").off("touchmove", sliderMove);
         slider.data("clicked", false);
     })
 
@@ -313,15 +321,13 @@ function compareAmoled() {
     function sliderMove(e) {
         if (!slider.data("clicked")) return;
 
-        var pos = e.pageX - img.offset().left
+        var pos = (e.pageX - img.offset().left) || (e.touches[0].clientX - img.offset().left)
 
         if (pos < 0) pos = 0;
         if (pos > w) pos = w;
 
         slider.css({ left: img.width() - slider.width() / 2 + "px" });
         img.css({ width: pos + "px" });
-
-
     }
 }
 
@@ -366,10 +372,10 @@ function populate_fCollection() {
             "pName": "cyclone",
             "price": '5,999',
             "dPrice": '1,599',
-            "colors": ["#eec3b2","black","#252b3b","#ccd0d1"],
+            "colors": ["#eec3b2", "black", "#252b3b", "#ccd0d1"],
             "desc": '1.39" Screen | BT Calling'
         },
-       
+
         {
             "imgUrl": "blaze_GamingHeaphone.webp",
             "pName": "blaze",
@@ -389,9 +395,9 @@ function populate_fCollection() {
     ]
 
     cardData.forEach((data) => {
-        var allColor=''
-        data.colors.forEach((color)=>{
-            allColor +=`<span style="--color: ${color};"></span>`
+        var allColor = ''
+        data.colors.forEach((color) => {
+            allColor += `<span style="--color: ${color};"></span>`
         })
         var card = `<div class="card">
                     <img src="img/fCollection/${data.imgUrl}" alt="${data.imgUrl}">
@@ -410,24 +416,24 @@ function populate_fCollection() {
 }
 
 function loaderAnimation() {
-    gsap.to("#loader h2 span",{
+    gsap.to("#loader h2 span", {
         y: 0,
         opacity: 1,
         duration: 0.4
     })
-    
-    
-    var tl= gsap.timeline({
-        repeat: -1, 
+
+
+    var tl = gsap.timeline({
+        repeat: -1,
         duration: 0.8,
     })
-    tl.to("#loader .loadDot span",{
+    tl.to("#loader .loadDot span", {
         opacity: 1,
         stagger: 0.2,
-        y:"0%",
+        y: "0%",
         x: "0%",
     })
-    tl.to("#loader .loadDot span",{
+    tl.to("#loader .loadDot span", {
         opacity: 0,
         stagger: 0.2,
         x: "-500%",
@@ -435,15 +441,15 @@ function loaderAnimation() {
     })
 
 
-    gsap.to("#loader div h3",{
+    gsap.to("#loader div h3", {
         scale: 1,
         delay: 1,
         duration: 0.5,
         stagger: 0.5,
-        repeat: -1, 
+        repeat: -1,
         repeatDelay: 0.5
     })
-    
+
 }
 
 

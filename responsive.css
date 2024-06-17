@@ -223,6 +223,10 @@
         height: 95vh;
     }
 
+    #amoled .container{
+        height: 12rem;
+    }
+
 
     #findStyle {
         .container {
@@ -359,10 +363,7 @@
     }
 
 
-    #amoled .container{
-        height: 12rem;
-    }
-
+   
 
     #findStyle {
         .card-lg {
