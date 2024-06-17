@@ -1,33 +1,6 @@
-@media (max-width: 900px) {
-    nav {
-        .navMenu {
-            display: none !important;
-        }
-
-        #hamburger {
-            display: flex !important;
-        }
-    }
-
-
-    #topCategory {
-        & .container {
-            .cardCont {
-                width: 100%;
-                padding: 0 0.2rem;
-            }
-            .card[th='light']{
-                background-position: top right 42%;
-            }
-        }
-    }
-
-
-}
-
-
-
 @media (max-width: 1200px) {
+
+
     #findStyle {
         .container {
             flex-direction: column;
@@ -47,24 +20,143 @@
     }
 }
 
+
+@media (max-width: 900px) {
+    nav {
+        .navMenu {
+            display: none !important;
+        }
+
+        #hamburger {
+            display: flex !important;
+        }
+    }
+
+
+    #topCategory {
+        & .container {
+            .cardCont {
+                width: 100%;
+                padding: 0 0.2rem;
+            }
+
+            .card[th='light'] {
+                background-position: top right 42%;
+            }
+        }
+    }
+
+
+
+    #newsLetter {
+        flex-direction: column;
+        height: fit-content;
+
+        .left {
+            width: 100%;
+            height: 70vw;
+            margin-bottom: 1.5rem;
+        }
+
+        .right {
+            width: 100%;
+            padding: 0 1rem;
+
+            h1 {
+                font-size: 2.8em;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+        }
+    }
+
+
+}
+
+
 /* Mobile Breakpoint (768px) */
 @media (max-width: 768px) {
     :root {
         --sec_mx: 1rem;
     }
 
-    #strip,
-    #amoled {
-        display: none;
-    }
 
     section,
     nav {
         width: calc(100% - 2rem);
     }
 
+    #home {
+        flex-direction: column;
 
+        .contLeft {
+            width: 100%;
+            padding: 0.85rem;
+            padding-bottom: 0;
+            height: 25%;
 
+            .logo {
+                width: 8rem;
+            }
+
+            h1 {
+                font-size: 2.5em;
+                width: 95%;
+            }
+        }
+
+        .contRight {
+            width: 100%;
+            height: 75%;
+            padding: 0.7rem;
+        }
+
+        .btn1 {
+            margin: 0.8rem 0;
+            height: 2.7rem;
+            width: 10rem;
+
+            h4 {
+                font-weight: 600;
+                font-size: 1.2em;
+            }
+        }
+    }
+
+    #strip {
+        padding: 5px 0;
+        margin: 0;
+
+        .container div {
+            h1 {
+                gap: 1rem;
+                font-size: 2.8rem;
+
+                img {
+                    height: 2.8rem;
+                }
+            }
+
+            >img {
+                height: 1.3rem;
+            }
+        }
+    }
+
+    #amoled .container {
+        height: 16rem;
+
+        .img-comp img {
+            scale: 0.8;
+        }
+
+        .slider .circle {
+            width: 40px;
+            height: 40px;
+        }
+    }
 
     #findStyle {
         .card-lg h2 {
@@ -114,41 +206,24 @@
     }
 
     #home {
-        flex-direction: column;
-
         .contLeft {
-            width: 100%;
-            padding: 0.85rem;
-            padding-bottom: 0;
-            height: 40%;
+            height: 35%;
 
             .logo {
-                width: 8rem;
-            }
-
-            h1 {
-                font-size: 2.5em;
-                width: 95%;
+                width: 6rem;
             }
         }
 
         .contRight {
-            width: 100%;
-            height: 60%;
-            padding: 0.7rem;
-        }
-
-        .btn1 {
-            margin: 0.8rem 0;
-            height: 2.7rem;
-            width: 10rem;
-
-            h4 {
-                font-weight: 600;
-                font-size: 1.2em;
-            }
+            height: 65%;
         }
     }
+
+    #topCategory {
+        height: 95vh;
+        padding-top: 3rem;
+    }
+
 
     #findStyle {
         .container {
@@ -220,6 +295,37 @@
             font-size: 1.2em;
         }
     }
+
+    #newsLetter {
+        .left {
+            height: 50vh;
+            margin-bottom: 0.5rem;
+        }
+
+        .right {
+            padding: 0 1.5rem;
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            input {
+                font-size: 1.2em;
+                margin: 1.5rem 0;
+            }
+
+            .btn {
+                font-size: 1.1em;
+                padding: 0.6rem 2rem;
+            }
+        }
+    }
+
+
 }
 
 /* Mobile Breakpoint (400px) */
@@ -254,6 +360,10 @@
     }
 
 
+    #amoled .container{
+        height: 12rem;
+    }
+
 
     #findStyle {
         .card-lg {
@@ -287,6 +397,9 @@
             }
         }
     }
+
+
+
 
 
 }

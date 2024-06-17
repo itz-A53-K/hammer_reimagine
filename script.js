@@ -11,6 +11,21 @@
     });
 })();
 
+loaderAnimation()
+window.onload=function(){
+
+    setTimeout(() => {
+        gsap.to("#loader",{
+            y: "-100%",
+            onStart:()=>{
+                $("body").css("height", "100%")
+                
+            }
+        })
+        
+    }, 5000);
+    
+}
 
 function navAnimation() {
 
@@ -393,6 +408,43 @@ function populate_fCollection() {
         $("#collection .container").append(card)
     })
     $("#collection .container").append(`<div class="card cardV"><h2>View All</h2><i class="ri-arrow-right-fill"></i></div>`)
+}
+
+function loaderAnimation() {
+    gsap.to("#loader h2 span",{
+        y: 0,
+        opacity: 1,
+        duration: 0.4
+    })
+    
+    
+    var tl= gsap.timeline({
+        repeat: -1, 
+        duration: 0.8,
+    })
+    tl.to("#loader .loadDot span",{
+        opacity: 1,
+        stagger: 0.2,
+        y:"0%",
+        x: "0%",
+    })
+    tl.to("#loader .loadDot span",{
+        opacity: 0,
+        stagger: 0.2,
+        x: "-500%",
+        y: "50%",
+    })
+
+
+    gsap.to("#loader div h3",{
+        scale: 1,
+        delay: 1,
+        duration: 0.5,
+        stagger: 0.5,
+        repeat: -1, 
+        repeatDelay: 0.5
+    })
+    
 }
 
 
