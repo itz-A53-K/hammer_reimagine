@@ -17,9 +17,9 @@ window.onload=function(){
     setTimeout(() => {
         gsap.to("#loader",{
             y: "-100%",
-            onStart:()=>{
-                $("body").css("height", "100%").css("overflow","visible")                
-            }
+            // onStart:()=>{
+            //     $("body").css("height", "100%").css("overflow","visible")                
+            // }
         })
         
     }, 5000);
