@@ -231,13 +231,22 @@ function stripAnim() {
         animationController(deltaY)
     });
     $(window).on('touchmove', function (dets) {
-        const currentY = dets.originalEvent.changedTouches[0].clientY;
+        // const currentY = dets.originalEvent.changedTouches[0].clientY;
 
-        if (lastY !== null) {
-            const deltaY = currentY - lastY;
-            animationController(deltaY)
-        }
-        lastY = currentY
+        // if (lastY !== null) {
+        //     const deltaY = currentY - lastY;
+        //     animationController(deltaY)
+        // }
+        // lastY = currentY
+
+        gsap.to("#strip .container",
+            {
+                x:"-100%",
+                duration: 10,
+                repeat: -1,
+                ease: "none"
+            },
+        )
     });
 
     function animationController(deltaY) {
