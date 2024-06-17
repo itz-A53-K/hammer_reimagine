@@ -205,6 +205,7 @@
     }
 
     #home {
+        height: calc(95vh - 100px);
         .contLeft {
             height: 35%;
 
