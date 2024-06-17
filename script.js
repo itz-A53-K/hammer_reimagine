@@ -18,8 +18,7 @@ window.onload=function(){
         gsap.to("#loader",{
             y: "-100%",
             onStart:()=>{
-                $("body").css("height", "100%")
-                
+                $("body").css("height", "100%").css("overflow","visible")                
             }
         })
         
