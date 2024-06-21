@@ -15,11 +15,9 @@ loaderAnimation()
 window.onload = function () {
 
     setTimeout(() => {
+        
         gsap.to("#loader", {
             y: "-100%",
-            // onStart:()=>{
-            //     $("body").css("height", "100%").css("overflow","visible")                
-            // }
         })
 
     }, 5000);
@@ -223,76 +221,13 @@ function topCategory() {
 
 function stripAnim() {
 
-    gsap.to("#strip .container",
-        {
-            x:"-100%",
-            duration: 10,
-            repeat: -1,
-            ease: "none"
-        },
-    )
-
-    var play = revplay = false
-    var lastY = null
-
-    $(window).on('wheel', function (dets) {
-        var deltaY = dets.originalEvent.deltaY
-        animationController(deltaY)
-    });
-    // $(window).on('touchmove', function (dets) {
-    //     const currentY = dets.originalEvent.changedTouches[0].clientY;
-
-    //     if (lastY !== null) {
-    //         const deltaY = currentY - lastY;
-    //         animationController(deltaY)
-    //     }
-    //     lastY = currentY        
-    // });
-
-    function animationController(deltaY) {
-
-        if (deltaY > 0 && !play) {
-            play = true
-            revplay = false
-            gsap.fromTo("#strip .container",
-                {
-                    transform: 'translateX(0%)',
-                    duration: 10,
-                    repeat: -1,
-                    ease: "none"
-                },
-                {
-                    transform: 'translateX(-100%)',
-                    duration: 10,
-                    repeat: -1,
-                    ease: "none"
-                },
-            )
-            $("#strip .container div>img").removeClass('reverse')
-        }
-        else {
-            if (revplay == false) {
-                revplay = true
-                play = false
-                gsap.fromTo("#strip .container",
-                    {
-                        transform: 'translateX(-100%)',
-                        duration: 10,
-                        repeat: -1,
-                        ease: "none"
-                    },
-                    {
-                        transform: 'translateX(0%)',
-                        duration: 10,
-                        repeat: -1,
-                        ease: "none"
-                    },
-                )
-
-                $("#strip .container div>img").addClass('reverse')
-            }
-        }
-    }
+    gsap.to("#strip .container", {
+        x: "-100%",
+        duration: 10,
+        repeat: -1,
+        ease: "none"
+    })
+   
 }
 
 
@@ -475,3 +410,74 @@ topCategory()
 compareAmoled()
 populate_fCollection()
 
+
+
+
+
+
+
+// function stripDirectionControlOnScroll() {
+
+
+//     var play = revplay = false
+    
+//     $(window).on('wheel', function (dets) {
+//         var deltaY = dets.originalEvent.deltaY
+//         animationController(deltaY)
+//     });
+//     // var lastY = null
+//     // $(window).on('touchmove', function (dets) {
+//     //     const currentY = dets.originalEvent.changedTouches[0].clientY;
+
+//     //     if (lastY !== null) {
+//     //         const deltaY = currentY - lastY;
+//     //         animationController(deltaY)
+//     //     }
+//     //     lastY = currentY        
+//     // });
+
+//     function animationController(deltaY) {
+
+//         if (deltaY > 0 && !play) {
+//             play = true
+//             revplay = false
+//             gsap.fromTo("#strip .container",
+//                 {
+//                     transform: 'translateX(0%)',
+//                     duration: 10,
+//                     repeat: -1,
+//                     ease: "none"
+//                 },
+//                 {
+//                     transform: 'translateX(-100%)',
+//                     duration: 10,
+//                     repeat: -1,
+//                     ease: "none"
+//                 },
+//             )
+//             $("#strip .container div>img").removeClass('reverse')
+//         }
+//         else {
+//             if (revplay == false) {
+//                 revplay = true
+//                 play = false
+//                 gsap.fromTo("#strip .container",
+//                     {
+//                         transform: 'translateX(-100%)',
+//                         duration: 10,
+//                         repeat: -1,
+//                         ease: "none"
+//                     },
+//                     {
+//                         transform: 'translateX(0%)',
+//                         duration: 10,
+//                         repeat: -1,
+//                         ease: "none"
+//                     },
+//                 )
+
+//                 $("#strip .container div>img").addClass('reverse')
+//             }
+//         }
+//     }
+// }

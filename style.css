@@ -61,8 +61,7 @@ html {
 }
 
 
-section,
-nav {
+section {
     width: calc(100% - 6rem);
     margin: 4.5rem var(--sec_mx);
 }
@@ -157,14 +156,18 @@ section {
 }
 
 nav {
-    /* margin: 0 3rem; */
-    margin: 0 auto;
+    width: 100% !important;
     height: 80px;
     position: relative;
     background-color: var(--bg-body);
     z-index: 10;
-
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0 var(--sec_mx);
+    
     >.container {
+        
         height: 100%;
         width: 100%;
         display: flex;
@@ -327,7 +330,7 @@ nav .dropdown-bg {
     width: 100%;
     position: absolute;
     left: 0;
-    top: 65px;
+    top: 80px;
     z-index: 9;
 
     background: rgba(48, 47, 47, 0.211);
@@ -508,9 +511,9 @@ nav .menu-sm {
             padding: 2rem;
             color: var(--color2);
             font-family: var(--font2);
+            text-align: center;
 
             h4 {
-                text-align: center;
                 font-size: 2rem;
             }
 
@@ -523,6 +526,7 @@ nav .menu-sm {
                 p {
                     font-size: 1.2rem;
                     font-weight: 500;
+                    
                 }
             }
 
@@ -989,7 +993,7 @@ nav .menu-sm {
 
 .footerBorder {
     height: 1px;
-    margin-top: 20rem;
+    margin-top: 25rem;
 }
 
 .footBG {
