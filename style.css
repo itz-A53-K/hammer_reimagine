@@ -14,7 +14,6 @@
 }
 
 :root {
-    --bg-primary: ;
     --bg-body: #fbfef9;
     --white: #fff;
     --black: #000;
@@ -22,6 +21,8 @@
     --color2: #dadada;
     --color3: #F6CEB7;
     --color4: #8C99D6;
+    --color5: #f4f2f0;
+    --color6: #afb6d61b;
 
     --font1: 'Poppins', sans-serif;
     --font2: "Philosopher";
@@ -45,8 +46,6 @@ body,
 html {
     height: 100%;
     width: 100%;
-    /* height: 100vh;
-    overflow: hidden; */
 }
 
 
@@ -141,7 +140,6 @@ section {
             font-size: 2.2em;
             background-color: var(--bg-body);
             position: absolute;
-            width: 9rem;
             top: 0;
             left: 0;
             scale: 0;
@@ -151,7 +149,6 @@ section {
 
 #main {
     background-color: var(--bg-body);
-    padding-bottom: 5rem;
 
 }
 
@@ -165,9 +162,9 @@ nav {
     display: flex;
     justify-content: center;
     padding: 0 var(--sec_mx);
-    
+
     >.container {
-        
+
         height: 100%;
         width: 100%;
         display: flex;
@@ -526,7 +523,7 @@ nav .menu-sm {
                 p {
                     font-size: 1.2rem;
                     font-weight: 500;
-                    
+
                 }
             }
 
@@ -817,7 +814,7 @@ nav .menu-sm {
     .card {
         width: 21rem;
         height: 28rem;
-        background: #f4f2f0;
+        background: var(--color5);
         padding: 0.8rem;
         border-radius: 10px;
         display: flex;
@@ -925,6 +922,7 @@ nav .menu-sm {
 
     .left {
         width: 45%;
+
         img {
             width: 100%;
             height: 100%;
@@ -960,13 +958,14 @@ nav .menu-sm {
             opacity: 0.8;
         }
 
-        form{
+        form {
             width: 80%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
+
         input {
             width: 100%;
             margin: 2rem 0;
@@ -989,6 +988,79 @@ nav .menu-sm {
             background: white;
         }
     }
+}
+
+footer {
+    background-color: var(--color5);
+    padding: 2rem var(--sec_mx);
+    .footerBody {
+        padding: 1rem 0;
+        display: flex;
+        gap: 0.5rem 0;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        
+        .container {
+            width: 15rem;
+
+            .title {
+                font-size: 1.1em;
+                text-transform: uppercase;
+                margin-top: 1rem;
+                margin-left: 0.6rem;
+            }
+
+            li {
+                list-style: none;
+                font-size: 1.05em;
+                padding: 5px 10px;
+                margin: 0.2rem 0;
+                letter-spacing: 0.5px;
+                
+                &:not(.dif) {
+                    cursor: pointer;
+                    border-radius: 20px;
+                    transition: all 0.5s ease-in-out;
+        
+                    &:hover {
+                        background-color: #a9a8a83c;
+                    }
+                }
+        
+            }
+            i{
+                font-size: 1.25em;
+            }
+
+        }
+
+        .contact{
+            width: 25rem;
+            a{
+                color: #222;
+                font-size: 1.1em;
+                font-weight: 500;
+                font-family: var(--font2);
+            }
+        } .social {
+            display: flex;
+            gap: 0.1rem;
+            margin: 0.5rem 0;
+
+            i {
+                font-size: 1.4em;
+            }
+
+            li {
+                margin: 0 !important;
+                font-size: medium;
+            }
+
+        }
+
+    }
+
+    
 }
 
 .footerBorder {
@@ -1016,7 +1088,7 @@ nav .menu-sm {
     h2 {
         width: 100%;
         padding: 1.5rem;
-        background-color: rgba(0, 0, 0, 0.45);
+        background-color: rgba(0, 0, 0, 0.30);
         text-align: center;
         font-size: 1.12em;
         font-family: var(--font7);
@@ -1026,103 +1098,3 @@ nav .menu-sm {
 
 
 
-/* .footer{
-    background-color: #24262bb9;
-    padding: 70px 0;
-    .container2{
-        max-width: 1170px;
-        margin:auto;
-    }
-    .row{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    ul{
-        list-style: none;
-    }
-    .footer-col{
-       width: 25%;
-       padding: 0 15px;
-    }
-    .footer-col h4{
-        font-size: 18px;
-        color: #ffffff;
-        text-transform: capitalize;
-        margin-bottom: 35px;
-        font-weight: 500;
-        position: relative;
-    }
-    .footer-col h4::before{
-        content: '';
-        position: absolute;
-        left:0;
-        bottom: -10px;
-        background-color: #e91e63;
-        height: 2px;
-        box-sizing: border-box;
-        width: 50px;
-    }
-    .footer-col ul li:not(:last-child){
-        margin-bottom: 10px;
-    }
-    .footer-col ul li a{
-        font-size: 16px;
-        text-transform: capitalize;
-        color: #ffffff;
-        text-decoration: none;
-        font-weight: 300;
-        color: #bbbbbb;
-        display: block;
-        transition: all 0.3s ease;
-    }
-    .footer-col ul li a:hover{
-        color: #ffffff;
-        padding-left: 8px;
-    }
-    .footer-col .social-links a{
-        display: inline-block;
-        height: 40px;
-        width: 40px;
-        background-color: rgba(255,255,255,0.2);
-        margin:0 10px 10px 0;
-        text-align: center;
-        line-height: 40px;
-        border-radius: 50%;
-        color: #ffffff;
-        transition: all 0.5s ease;
-    }
-    .footer-col .social-links a:hover{
-        color: #24262b;
-        background-color: #ffffff;
-    }
-    
-    .footer-section form {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .footer-section form input,
-    .footer-section form button {
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    
-    .footer-section form button {
-        background-color: #000;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-    }
-    
-    .footer-bottom {
-        text-align: center;
-        margin-top: 20px;
-    }
-    .footer-bottom{
-        margin: 25px;
-        margin-left: 100px;
-    }
-    
-}  */
