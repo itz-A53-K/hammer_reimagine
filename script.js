@@ -20,7 +20,7 @@ window.onload = function () {
             y: "-100%",
         })
 
-    }, 10);
+    }, 5000);
 
 }
 
