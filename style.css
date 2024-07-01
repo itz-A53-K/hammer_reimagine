@@ -78,7 +78,7 @@ section {
         margin-bottom: 1rem;
         padding: 1rem 0;
         z-index: 10;
-
+        width: fit-content;
         background-color: var(--bg-body);
         position: relative;
         font-family: var(--font6);

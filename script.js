@@ -37,13 +37,6 @@ window.onload = function () {
         gsap.to(window, { duration: 2, scrollTo: 0 });
     })
 
-    
-    stripAnim()
-    navAnimation()
-    showSlides()
-    topCategory()
-    compareAmoled()
-    populate_fCollection()   
 }
 
 
@@ -426,7 +419,12 @@ function loaderAnimation() {
 
 
 
-
+stripAnim()
+navAnimation()
+showSlides()
+topCategory()
+compareAmoled()
+populate_fCollection() 
 
 
 
