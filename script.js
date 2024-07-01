@@ -14,15 +14,40 @@
 loaderAnimation()
 window.onload = function () {
 
-    setTimeout(() => {
-        
+    setTimeout(() => {        
         gsap.to("#loader", {
             y: "-100%",
         })
-
     }, 5000);
 
+
+    window.addEventListener('scroll',()=>{
+        var btm
+        if(this.scrollY > 300)
+            btm = '3%'
+        else
+            btm = '-20%'
+
+        $("#scrollTop").css({
+            bottom: btm
+        })            
+    })
+
+    document.querySelector("#scrollTop").addEventListener("click",()=> {
+        gsap.to(window, { duration: 2, scrollTo: 0 });
+    })
+
+    
+    stripAnim()
+    navAnimation()
+    showSlides()
+    topCategory()
+    compareAmoled()
+    populate_fCollection()   
 }
+
+
+
 
 function navAnimation() {
 
@@ -403,12 +428,6 @@ function loaderAnimation() {
 
 
 
-stripAnim()
-navAnimation()
-showSlides()
-topCategory()
-compareAmoled()
-populate_fCollection()
 
 
 

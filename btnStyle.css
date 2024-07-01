@@ -100,3 +100,26 @@ button{
 
 
 }
+
+.btn3{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    h2{
+        z-index: 5;
+    }
+
+    .btnBG{
+        content: "";
+        height: 100%;
+        width: 80%;
+        border-radius: 50%;
+        background-color: var(--color2);
+        position: absolute;
+        z-index: 3;
+        left: 50%;
+        transform: translate(-50%);
+        top: 85%;
+
+    }
+}

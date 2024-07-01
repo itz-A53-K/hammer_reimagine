@@ -40,13 +40,20 @@
     padding: 0;
     box-sizing: border-box;
     font-size: 16px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 body,
 html {
     height: 100%;
     width: 100%;
+    
 }
+
+
 
 
 
@@ -786,16 +793,24 @@ nav .menu-sm {
             bottom: 8%;
             transform: translate(-50%);
             letter-spacing: 1.2px;
-
+            width: 15rem;
+            
             padding: 12px 25px;
             border-radius: 10px;
             background-color: var(--color3);
             box-shadow: 0 0 15px #666;
-
+            
             font-weight: 500;
             font-size: 1.1em;
-
+            
             border: none;
+            opacity: 0.9;
+            
+            &:hover{
+                letter-spacing: .5px;
+                font-weight: 600;
+                opacity: 1;
+            }
         }
     }
 }
@@ -993,13 +1008,14 @@ nav .menu-sm {
 footer {
     background-color: var(--color5);
     padding: 2rem var(--sec_mx);
+
     .footerBody {
         padding: 1rem 0;
         display: flex;
         gap: 0.5rem 0;
         justify-content: space-between;
         flex-wrap: wrap;
-        
+
         .container {
             width: 15rem;
 
@@ -1008,6 +1024,8 @@ footer {
                 text-transform: uppercase;
                 margin-top: 1rem;
                 margin-left: 0.6rem;
+                font-family: var(--font4);
+                font-weight: 500;
             }
 
             li {
@@ -1016,51 +1034,73 @@ footer {
                 padding: 5px 10px;
                 margin: 0.2rem 0;
                 letter-spacing: 0.5px;
-                
+                font-family: var(--font1);
+
                 &:not(.dif) {
                     cursor: pointer;
                     border-radius: 20px;
                     transition: all 0.5s ease-in-out;
-        
+
                     &:hover {
                         background-color: #a9a8a83c;
                     }
                 }
-        
+
             }
-            i{
+
+            i {
                 font-size: 1.25em;
             }
 
         }
 
-        .contact{
+        .contact {
             width: 25rem;
-            a{
+
+            a {
                 color: #222;
                 font-size: 1.1em;
                 font-weight: 500;
                 font-family: var(--font2);
             }
-        } .social {
-            display: flex;
-            gap: 0.1rem;
-            margin: 0.5rem 0;
 
-            i {
-                font-size: 1.4em;
-            }
+            .social {
+                display: flex;
+                gap: 0.1rem;
+                margin: 0.5rem 0;
 
-            li {
-                margin: 0 !important;
-                font-size: medium;
+                i {
+                    font-size: 1.4em;
+                }
+
+                li {
+                    height: 2rem;
+                    width: 2.5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    margin: 0 !important;
+                    &:hover{
+                        img{
+                            display: block;
+                        }
+                        i{
+                            display: none;
+                        }
+                    }
+                }
+                img{
+                    height: 1.5rem;
+                    display: none;
+                }
+
             }
 
         }
-
     }
 
-    
+
 }
 
 .footerBorder {
@@ -1097,4 +1137,46 @@ footer {
 }
 
 
+.feedback{
+    position: fixed;
+    cursor: pointer;
+    right: 0;
+    top: 42%;
+    z-index: 5;
+    padding: 0.8rem 0.6rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: var(--color1);
 
+    h2{
+        font-weight: 500;
+        font-size: 0.9em;
+        font-family: var(--font1);
+        color: var(--bg-body);
+        transform: rotate(180deg);
+        text-transform: capitalize;
+        writing-mode: vertical-lr;
+        margin-bottom: 5px;
+    }
+
+    i{
+        font-size: 1rem;
+        color: var(--bg-body);
+    }
+}
+
+#scrollTop{
+    border-radius: 10px;
+    cursor: pointer;
+    position: fixed;
+    right: 1%;
+    bottom: -20%;
+    z-index: 5;
+    background-color: #000;
+    transition: all 0.5s ease-in-out;
+    i{
+        font-size: 2.5em;
+        color: var(--bg-body);
+
+    }
+}

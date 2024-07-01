@@ -73,6 +73,42 @@ function btnAnimations() {
     })
 
 
+    //btn animation 3
+    $(".btn3").each(function() {
+        
+        var btn= $(this)
+
+        btn.html(`<h2>${btn.html()}</h2> <div class="btnBG"></div>`)
+        
+
+        var tl = gsap.timeline({ paused: true })
+        
+        tl.to(btn.children('.btnBG'), {
+            top: '0',
+            width: '110%',
+            borderRadius: '30px',
+            backgroundColor:'#111',
+            opacity: 1,
+            duration: 0.35,
+        }, 'a')
+
+        tl.to(btn, {
+            color: 'white',
+            duration: 0.35,
+        }) 
+
+    
+        $(btn).hover(
+            function () {
+                tl.play()
+            },
+            function () {
+                tl.reverse()
+            }
+        )
+        
+    })
+
 
 
     
